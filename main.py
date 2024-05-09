@@ -4,10 +4,7 @@ import functionSolving
 
 def main():
     functions_list = functions_menu()
-    b, h = functionSolving.caluclate_nodes(functions_list, -1, 1)
-    print(b)
-    print(h)
-    a, n = functionSolving.newton_cotes(functions_list, 0, 2, 0.00001)
+    a, n = functionSolving.newton_cotes(functions_list, 1, 4, 0.00001)
     print(a)
     print(n)
 
