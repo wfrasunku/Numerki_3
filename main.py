@@ -1,9 +1,15 @@
 import functions
-import mathLib
+import functionSolving
 
 
 def main():
     functions_list = functions_menu()
+    b, h = functionSolving.caluclate_nodes(functions_list, -1, 1)
+    print(b)
+    print(h)
+    a, n = functionSolving.newton_cotes(functions_list, 0, 2, 0.00001)
+    print(a)
+    print(n)
 
 
 def functions_menu():
@@ -12,11 +18,10 @@ def functions_menu():
     while True:
         try:
             print(' 0) zakończ listę\n', '1) wielomian\n', '2) sinus\n', '3) cosinus\n', '4) tangens\n',
-                  '5) cotanges\n',
-                  '6) moduł')
+                  '5) cotanges\n', '6) moduł\n', '7) exponent\n', '8) pieriwastek')
             functions_amount += 1
             equation = int(input(f'Dodaj równanie nr {functions_amount}: '))
-            if 0 <= equation <= 6:
+            if 0 <= equation <= 8:
                 match equation:
                     case 0:
                         if functions_amount > 1:
@@ -51,6 +56,23 @@ def functions_menu():
                     case 6:
                         equation = functions.Abs()
                         functions_list.append(equation)
+                    case 7:
+                        while True:
+                            try:
+                                x = float(input('\nPodaj podstawe potegi: '))
+                                if x <= 0:
+                                    print('Ta wartość nie da żadnego wyniku!')
+                                else:
+                                    equation = functions.Exponential(x)
+                                    functions_list.append(equation)
+                                    break
+                            except ValueError:
+                                print('Niepoprawna wartość potęgi!')
+                    case 8:
+                        equation = functions.Root()
+                        functions_list.append(equation)
+
+
             else:
                 print('Niepoprawna wartość!\n')
                 functions_amount -= 1
