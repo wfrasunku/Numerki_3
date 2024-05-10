@@ -4,9 +4,8 @@ import functionSolving
 
 def main():
     functions_list = functions_menu()
-    a, n = functionSolving.newton_cotes(functions_list, 1, 4, 0.00001)
+    a = functionSolving.newton_cotes_limes(functions_list, 0.00001)
     print(a)
-    print(n)
 
 
 def functions_menu():
@@ -68,8 +67,6 @@ def functions_menu():
                     case 8:
                         equation = functions.Root()
                         functions_list.append(equation)
-
-
             else:
                 print('Niepoprawna wartość!\n')
                 functions_amount -= 1
