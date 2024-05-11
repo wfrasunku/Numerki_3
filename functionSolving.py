@@ -1,4 +1,5 @@
 import mathLib
+import ReadChebyshev
 
 
 def simpson_method(functions: list, left_boundary: float, right_boundary: float) -> float:
@@ -39,3 +40,12 @@ def newton_cotes_limes(functions: list, precision: float) -> float:
             return result
         a = b
         b += (1 - b)/2
+
+
+def gauss(functions: list, nodes_amount: int) -> float:
+    result = 0
+    for i in range(nodes_amount):
+        w = (ReadChebyshev.wspolczynniki(nodes_amount, i)[0])
+        x = (ReadChebyshev.wspolczynniki(nodes_amount, i)[1])
+        result += w * mathLib.evaluate_composite(x, functions)
+    return result

@@ -1,11 +1,13 @@
 import functions
 import functionSolving
 
-
 def main():
     functions_list = functions_menu()
-    a = functionSolving.newton_cotes_limes(functions_list, 0.00001)
-    print(a)
+    newton_cotes = functionSolving.newton_cotes_limes(functions_list, 0.00001)
+    for nodes in range(2, 6):
+        gauss = functionSolving.gauss(functions_list, nodes)
+        print("Dla", nodes, "węzłów, wartość Gaussa-Czybyszewa wynosi:", gauss)
+    print("Wartość Newtona-Cotesa wynosi:", newton_cotes)
 
 
 def functions_menu():
