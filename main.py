@@ -3,12 +3,25 @@ import functionSolving
 
 def main():
     functions_list = functions_menu()
-    newton_cotes = functionSolving.newton_cotes_limes(functions_list, 0.01)
+    precision = precision_menu()
+    newton_cotes = functionSolving.newton_cotes_limes(functions_list, precision)
     for nodes in range(2, 6):
         gauss_chebyshev = functionSolving.gauss_chebyshev(functions_list, nodes)
         print("Dla", nodes, "węzłów, wartość Gaussa-Czybyszewa wynosi:", gauss_chebyshev)
     print("Wartość Newtona-Cotesa wynosi:", newton_cotes)
 
+
+def precision_menu():
+    try:
+        precision = float(input("Wprowadź dokładność: "))
+        if precision > 0:
+            return precision
+        else:
+            print("dokładność musi być większy niż 0!")
+            return precision_menu()
+    except ValueError:
+        print("Niepoprawna dokładność!")
+        return precision_menu()
 
 
 def functions_menu():
