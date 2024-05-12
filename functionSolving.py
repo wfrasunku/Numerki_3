@@ -1,6 +1,5 @@
 import mathLib
 import math
-import ReadChebyshev
 
 
 def newton_cotes(functions: list, left_boundary: float, right_boundary: float, precision: float) -> float:
@@ -49,10 +48,10 @@ def simpson_weight(value: float, functions: list) -> float:
     return value
 
 
-def gauss_chebyshev(functions: list, nodes_amount: int) -> float:
+def gauss_chebyshev(functions: list, nodes_amount: int, data: list) -> float:
     result = 0
     for i in range(nodes_amount):
-        w = (ReadChebyshev.wspolczynniki(nodes_amount, i)[0])
-        x = (ReadChebyshev.wspolczynniki(nodes_amount, i)[1])
+        w = data[i][0]
+        x = data[i][1]
         result += w * mathLib.evaluate_composite(x, functions)
     return result
