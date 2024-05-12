@@ -7,10 +7,10 @@ def functions_menu():
     while True:
         try:
             print(' 0) zakończ listę\n', '1) wielomian\n', '2) sinus\n', '3) cosinus\n', '4) tangens\n',
-                  '5) cotanges\n', '6) moduł\n', '7) pieriwastek')
+                  '5) cotanges\n', '6) moduł')
             functions_amount += 1
             equation = int(input(f'Dodaj równanie nr {functions_amount}: '))
-            if 0 <= equation <= 7:
+            if 0 <= equation <= 6:
                 match equation:
                     case 0:
                         if functions_amount > 1:
@@ -44,9 +44,6 @@ def functions_menu():
                         functions_list.append(equation)
                     case 6:
                         equation = functions.Abs()
-                        functions_list.append(equation)
-                    case 7:
-                        equation = functions.Root()
                         functions_list.append(equation)
             else:
                 print('Niepoprawna wartość!\n')

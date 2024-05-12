@@ -41,9 +41,3 @@ class Cotangens:
     @staticmethod
     def evaluate(x: float) -> float:
         return 1 / math.tan(x)
-
-
-class Root:
-    @staticmethod
-    def evaluate(x: float) -> float:
-        return math.sqrt(x)
