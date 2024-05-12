@@ -43,15 +43,6 @@ class Cotangens:
         return 1 / math.tan(x)
 
 
-class Exponential:
-    @staticmethod
-    def __init__(self, base: float):
-        self.__base = base
-
-    def evaluate(self, x: float) -> float:
-        return math.pow(self.__base, x)
-
-
 class Root:
     @staticmethod
     def evaluate(x: float) -> float:
