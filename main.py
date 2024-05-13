@@ -10,13 +10,16 @@ def main():
     file_path = 'chebyshev.txt'
     functions_list = menu.functions_menu()
     precision = menu.precision_menu()
+    print("Tworzenie tabeli...")
 
     newton_cotes = functionSolving.newton_cotes_limes(functions_list, precision)
+    print("Wartość Newtona-Cotesa wynosi:", newton_cotes)
     table_data.append(['Newton-Cotes', newton_cotes, precision])
 
     for nodes in range(2, 6):
         data = menu.read_data(file_path, nodes)
         gauss_chebyshev = functionSolving.gauss_chebyshev(functions_list, nodes, data)
+        print("Dla", nodes, "węzłów, wartość Gaussa-Czybyszewa wynosi:", gauss_chebyshev)
         table_data.append(['Gauss-Chebyshev', gauss_chebyshev, nodes])
 
     table_df = pd.DataFrame(table_data, columns=['Method', 'Value', 'Nodes/Precision'])
@@ -33,6 +36,7 @@ def main():
     img = mpimg.imread('table.png')
     plt.imshow(img)
     plt.show()
+    print("Tabela ukończona!")
 
 
 if __name__ == '__main__':
